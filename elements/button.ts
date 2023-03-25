@@ -18,6 +18,13 @@ const outline1 = defineStyle({
   }
 });
 
+const unstyled1 = defineStyle({
+  color: 'app.gray.1',
+  _hover: {
+    color: 'app.gray.2'
+  }
+});
+
 export const buttonTheme = defineStyleConfig({
-  variants: { solid1, outline1 }
+  variants: {solid1, outline1, unstyled1}
 });
