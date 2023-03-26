@@ -33,6 +33,13 @@ const unstyled2 = defineStyle({
   }
 });
 
+const unstyled3 = defineStyle({
+  color: 'app.black.2',
+  _hover: {
+    color: 'app.black.1'
+  }
+});
+
 export const buttonTheme = defineStyleConfig({
-  variants: {solid1, outline1, unstyled1, unstyled2}
+  variants: {solid1, outline1, unstyled1, unstyled2, unstyled3}
 });
