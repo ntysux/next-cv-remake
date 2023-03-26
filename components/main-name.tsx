@@ -7,7 +7,7 @@ export default function MainName() {
   return (
     <Editable value={name}>
       <EditablePreview
-        mx='3'
+        px='3'
         color='white'
         fontWeight='600'
         maxW='100px'
