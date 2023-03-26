@@ -11,7 +11,7 @@ const baseStyle = definePartsStyle({
     rounded: 'sm'
   },
   item: {
-    p: 1,
+    px: 2,
     rounded: 'sm',
     fontSize: 'md',
     color: 'app.gray.3',
