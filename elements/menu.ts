@@ -17,8 +17,7 @@ const baseStyle = definePartsStyle({
     color: 'app.gray.3',
     bg: 'app.black.1',
     _hover: {
-      bg: 'app.black.2',
-      color: 'white'
+      bg: 'app.black.2'
     }
   },
   command: {
