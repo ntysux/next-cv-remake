@@ -15,6 +15,8 @@ const init: Cv = {
 
 const reducer = (cv = init, action: Action): Cv => {
   switch(action.type) {
+    case 'CHANGE_COLOR':
+      return {...cv, color: action.payload.color};
     default:
       return cv;
   }

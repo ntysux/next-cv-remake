@@ -1,5 +1,7 @@
 import { Box, Center, HStack, IconButton, Popover, PopoverContent, PopoverTrigger } from "@chakra-ui/react";
-import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { changeColor } from "@/redux/actions";
+import { RootState } from "@/redux/store";
 
 const colors: string[] = ['#5CF2E3', '#B980F2', '#F28DBC'];
 
@@ -12,7 +14,12 @@ const Map = ({array, render}: Map) =>
   <>{array.map((color, index) => render(color, index))}</>
 
 export default function ColorTheme() {
-  const [color, setColor] = useState('#5CF2E3');
+  const dispatch = useDispatch();
+  const { color } = useSelector((state: RootState) => state.cv);
+
+  function handleChangeColor(color: string) {
+    dispatch(changeColor(color));
+  }
 
   return (
     <Center>
@@ -40,7 +47,7 @@ export default function ColorTheme() {
                 variant='unstyled2'
                 size='xs'
                 icon={<Box p='2' rounded='full' bg={color} />}
-                onClick={() => setColor(color)}
+                onClick={() => handleChangeColor(color)}
               />
             }/>
           </HStack>
