@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
+import store from '@/redux/store';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { buttonTheme } from '@/elements/button';
 import { menuTheme } from '@/elements/menu';
@@ -32,8 +34,10 @@ const theme = extendTheme({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <Provider store={store}>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </Provider>
   );
 }
