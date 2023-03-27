@@ -39,6 +39,7 @@ export interface Cv {
   id: string,
   name: string,
   color: string,
+  mode: boolean,
   avatar?: Avatar,
   section: Section[]
 }
