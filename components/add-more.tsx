@@ -1,5 +1,5 @@
 import { Center, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList } from "@chakra-ui/react";
-import { IconCirclePlus, IconNote, IconTable, IconLayoutColumns, IconLayoutNavbar, IconList } from "@tabler/icons-react";
+import { IconCirclePlus, IconNote, IconList, IconHeading } from "@tabler/icons-react";
 
 export default function AddMore() {
   return (
@@ -14,22 +14,14 @@ export default function AddMore() {
         />
         <MenuList>
           <MenuItem
+            icon={<IconHeading size='18px' />}
+            command='Tiêu đề'
+          />
+          <MenuItem
             icon={<IconNote size='18px' />}
             command='Ghi chú'
           />
           <MenuDivider />
-          <MenuItem
-            icon={<IconTable size='18px' />}
-            command='Bảng'
-          />
-          <MenuItem
-            icon={<IconLayoutColumns size='18px' />}
-            command='Cột'
-          />
-          <MenuItem
-            icon={<IconLayoutNavbar size='18px' />}
-            command='Dòng'
-          />
           <MenuItem
             icon={<IconList size='18px' />}
             command='Danh sách'
