@@ -11,7 +11,7 @@ interface HandleChangeMode {
 
 export default function Mode() {
   const dispatch = useDispatch();
-  const { mode } = useSelector((state: RootState) => state.cv);
+  const { mode, color } = useSelector((state: RootState) => state.cv);
 
   const handleChangeMode: HandleChangeMode = {
     view: () => dispatch(changeMode(false)),
@@ -30,14 +30,14 @@ export default function Mode() {
         />
         <MenuList>
           <MenuItem
-            icon={<IconEye size='20px' />}
+            icon={<IconEye color={!mode ? color : '#E0E0E0'} size='20px' />}
             onClick={handleChangeMode.view}
             command='Ctrl + V'
           >
             Chế độ xem
           </MenuItem>
           <MenuItem
-            icon={<IconPencil size='20px' />}
+            icon={<IconPencil color={mode ? color : '#E0E0E0'} size='20px' />}
             onClick={handleChangeMode.edit}
             command='Ctrl + E'
           >
