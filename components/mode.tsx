@@ -1,8 +1,22 @@
-import { Center, IconButton, Menu, MenuButton, MenuItem, MenuList, useBoolean } from "@chakra-ui/react";
+import { Center, IconButton, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { IconPencil, IconEye } from "@tabler/icons-react";
+import { useDispatch, useSelector } from "react-redux";
+import { ChangeMode, changeMode } from "@/redux/actions";
+import { RootState } from "@/redux/store";
+
+interface HandleChangeMode {
+  view: () => ChangeMode,
+  edit: () => ChangeMode
+}
 
 export default function Mode() {
-  const [mode, setMode] = useBoolean(false);
+  const dispatch = useDispatch();
+  const { mode } = useSelector((state: RootState) => state.cv);
+
+  const handleChangeMode: HandleChangeMode = {
+    view: () => dispatch(changeMode(false)),
+    edit: () => dispatch(changeMode(true))
+  }
 
   return (
     <Center>
@@ -17,14 +31,14 @@ export default function Mode() {
         <MenuList>
           <MenuItem
             icon={<IconEye size='20px' />}
-            onClick={setMode.off}
+            onClick={handleChangeMode.view}
             command='Ctrl + V'
           >
             Chế độ xem
           </MenuItem>
           <MenuItem
             icon={<IconPencil size='20px' />}
-            onClick={setMode.on}
+            onClick={handleChangeMode.edit}
             command='Ctrl + E'
           >
             Chế độ chỉnh sửa

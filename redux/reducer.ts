@@ -1,9 +1,5 @@
 import { Cv } from "./state-interface";
-
-interface Action {
-  type: string,
-  payload: any
-}
+import { TypeAction } from "./actions";
 
 const init: Cv = {
   id: '',
@@ -13,10 +9,12 @@ const init: Cv = {
   section: []
 };
 
-const reducer = (cv = init, action: Action): Cv => {
+const reducer = (cv = init, action: TypeAction): Cv => {
   switch(action.type) {
     case 'CHANGE_COLOR':
-      return {...cv, color: action.payload.color};
+      if ('color' in action.payload) return {...cv, color: action.payload.color};
+    case 'CHANGE_MODE':
+      if ('mode' in action.payload) return {...cv, mode: action.payload.mode};
     default:
       return cv;
   }
