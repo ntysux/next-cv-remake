@@ -11,6 +11,8 @@ const init: Cv = {
 
 const reducer = (cv = init, action: TypeAction): Cv => {
   switch(action.type) {
+    case 'RENAME':
+      if ('newName' in action.payload) return {...cv, name: action.payload.newName};
     case 'CHANGE_COLOR':
       if ('color' in action.payload) return {...cv, color: action.payload.color};
     case 'CHANGE_MODE':
