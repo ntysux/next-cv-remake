@@ -17,7 +17,16 @@ export interface Rename extends Action {
   payload: {newName: string}
 }
 
-export type TypeAction = Action | ChangeColor | ChangeMode | Rename
+export interface RemoveSection extends Action {
+  payload: {index: number}
+}
+
+export type TypeAction = 
+  Action |
+  ChangeColor |
+  ChangeMode |
+  Rename |
+  RemoveSection
 
 export const changeColor = (color: string): ChangeColor => ({
   type: 'CHANGE_COLOR',
@@ -36,4 +45,9 @@ export const rename = (newName: string): Rename => ({
 
 export const addNote = (): Action => ({
   type: 'ADD_NOTE'
+});
+
+export const removeSection = (index: number): RemoveSection => ({
+  type: 'REMOVE_SECTION',
+  payload: {index}
 });

@@ -28,6 +28,16 @@ const reducer = (cv = init, action: TypeAction): Cv => {
           }
         ]
       }
+    case 'REMOVE_SECTION':
+      if('payload' in action && 'index' in action.payload) {
+        return {
+          ...cv,
+          section: [
+            ...cv.section.slice(0, action.payload.index),
+            ...cv.section.slice(action.payload.index + 1)
+          ]
+        }
+      }
     default:
       return cv;
   }

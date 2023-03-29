@@ -1,12 +1,21 @@
+import { removeSection } from "@/redux/actions";
 import { Box, Center, Divider, Flex, HStack, IconButton, Text } from "@chakra-ui/react";
 import { IconX } from "@tabler/icons-react";
+import { useDispatch } from "react-redux";
 
 interface Props {
   children: JSX.Element,
-  name: string
+  name: string,
+  index: number
 }
 
-export default function DataDisplayFrame({ children, name }: Props) {
+export default function DataDisplayFrame({ children, name, index }: Props) {
+  const dispatch = useDispatch();
+
+  function handleRemoveSection() {
+    dispatch(removeSection(index));
+  }
+
   return (
     <Box>
       <Flex justify='right'>
@@ -30,6 +39,7 @@ export default function DataDisplayFrame({ children, name }: Props) {
             variant='unstyled1'
             size='xs'
             icon={<IconX size='16px' strokeWidth='3' />}
+            onClick={handleRemoveSection}
           />
         </HStack>
       </Flex>

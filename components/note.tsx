@@ -1,6 +1,5 @@
 import { Textarea } from "@chakra-ui/react";
 import { useRef } from "react";
-import DataDisplayFrame from "./data-display-frame";
 
 export function NoteEdit() {
   const textareaRef = useRef(null);
@@ -12,12 +11,10 @@ export function NoteEdit() {
   }
 
   return (
-    <DataDisplayFrame name='Ghi chú'>
-      <Textarea
-        ref={textareaRef}
-        variant='unstyled1'
-        onChange={adjustTextareaHeight}
-      />
-    </DataDisplayFrame>
+    <Textarea
+      ref={textareaRef}
+      variant='unstyled1'
+      onChange={adjustTextareaHeight}
+    />
   );
 }

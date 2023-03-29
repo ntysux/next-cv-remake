@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import AddMore from "./add-more";
 import { NoteEdit } from "./note";
 import { DataDisplay, TypeData } from "@/redux/state-interface";
+import DataDisplayFrame from "./data-display-frame";
 
 interface Map {
   array: DataDisplay[],
@@ -30,7 +31,10 @@ export default function Stage() {
         <Map array={section} render={(data, index) => 
           <Stack key={index}>
             {
-              data.type === TypeData.Note && <NoteEdit />
+              data.type === TypeData.Note &&
+                <DataDisplayFrame name='Ghi chú' index={index}>
+                  <NoteEdit />
+                </DataDisplayFrame>
             }
           </Stack>
         }/>
