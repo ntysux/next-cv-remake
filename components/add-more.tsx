@@ -1,13 +1,17 @@
 import { Center, IconButton, Menu, MenuButton, MenuDivider, MenuItem, MenuList } from "@chakra-ui/react";
 import { IconCirclePlus, IconNote, IconList, IconHeading } from "@tabler/icons-react";
 import { useDispatch } from "react-redux";
-import { addNote } from "@/redux/actions";
+import { addHeading, addNote } from "@/redux/actions";
 
 export default function AddMore() {
   const dispatch = useDispatch();
 
   function handleAddNote() {
     dispatch(addNote());
+  }
+
+  function handleAddHeading() {
+    dispatch(addHeading());
   }
 
   return (
@@ -24,6 +28,7 @@ export default function AddMore() {
           <MenuItem
             icon={<IconHeading size='18px' />}
             command='Tiêu đề'
+            onClick={handleAddHeading}
           />
           <MenuItem
             icon={<IconNote size='18px' />}

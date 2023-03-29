@@ -5,6 +5,7 @@ import AddMore from "./add-more";
 import { NoteEdit } from "./note";
 import { DataDisplay, TypeData } from "@/redux/state-interface";
 import DataDisplayFrame from "./data-display-frame";
+import HeadingEdit from "./heading";
 
 interface Map {
   array: DataDisplay[],
@@ -30,6 +31,12 @@ export default function Stage() {
       <Stack spacing='4'>
         <Map array={section} render={(data, index) => 
           <Stack key={index}>
+            {
+              data.type === TypeData.Heading &&
+                <DataDisplayFrame name='Tiêu đề' index={index}>
+                  <HeadingEdit />
+                </DataDisplayFrame>
+            }
             {
               data.type === TypeData.Note &&
                 <DataDisplayFrame name='Ghi chú' index={index}>

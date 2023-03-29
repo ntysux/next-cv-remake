@@ -47,6 +47,10 @@ export const addNote = (): Action => ({
   type: 'ADD_NOTE'
 });
 
+export const addHeading = (): Action => ({
+  type: 'ADD_HEADING'
+});
+
 export const removeSection = (index: number): RemoveSection => ({
   type: 'REMOVE_SECTION',
   payload: {index}
