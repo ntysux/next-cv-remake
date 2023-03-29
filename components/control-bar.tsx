@@ -5,7 +5,7 @@ import Settings from "./settings";
 
 export default function ControlBar() {
   return (
-    <HStack p='1' position='sticky' top='0' zIndex='11111'>
+    <HStack p='1' position='sticky' top='0' zIndex='11'>
       <Settings />
       <Spacer />
       <Dashboard />
