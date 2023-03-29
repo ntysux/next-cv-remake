@@ -7,27 +7,22 @@ export enum TypeData {
 export interface Heading {
   id: string,
   type: TypeData.Heading,
-  data: string
+  data?: string
 }
 
 export interface Note {
   id: string,
   type: TypeData.Note,
-  data: string
+  data?: string
 }
 
 export interface List {
   id: string,
   type: TypeData.List,
-  data: string[]
+  data?: string[]
 }
 
 export type DataDisplay = Heading | Note | List
-
-export interface Section {
-  name: string,
-  data: DataDisplay[]
-}
 
 export interface Avatar {
   name: string,
@@ -41,5 +36,5 @@ export interface Cv {
   color: string,
   mode: boolean,
   avatar?: Avatar,
-  section: Section[]
+  section: DataDisplay[]
 }
