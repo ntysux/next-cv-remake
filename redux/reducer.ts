@@ -39,6 +39,17 @@ const reducer = (cv = init, action: TypeAction): Cv => {
           }
         ]
       }
+    case 'ADD_LIST':
+      return {
+        ...cv,
+        section: [
+          ...cv.section,
+          {
+            id: '',
+            type: TypeData.List
+          }
+        ]
+      }
     case 'REMOVE_SECTION':
       if('payload' in action && 'index' in action.payload) {
         return {

@@ -51,6 +51,10 @@ export const addHeading = (): Action => ({
   type: 'ADD_HEADING'
 });
 
+export const addList = (): Action => ({
+  type: 'ADD_LIST'
+});
+
 export const removeSection = (index: number): RemoveSection => ({
   type: 'REMOVE_SECTION',
   payload: {index}

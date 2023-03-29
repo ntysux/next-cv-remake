@@ -6,6 +6,7 @@ import { NoteEdit } from "./note";
 import { DataDisplay, TypeData } from "@/redux/state-interface";
 import DataDisplayFrame from "./data-display-frame";
 import HeadingEdit from "./heading";
+import ListEdit from "./list";
 
 interface Map {
   array: DataDisplay[],
@@ -41,6 +42,12 @@ export default function Stage() {
               data.type === TypeData.Note &&
                 <DataDisplayFrame name='Ghi chú' index={index}>
                   <NoteEdit />
+                </DataDisplayFrame>
+            }
+            {
+              data.type === TypeData.List &&
+                <DataDisplayFrame name='Danh sách' index={index}>
+                  <ListEdit />
                 </DataDisplayFrame>
             }
           </Stack>
