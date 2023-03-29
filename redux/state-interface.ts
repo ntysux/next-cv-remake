@@ -19,7 +19,7 @@ export interface Note {
 export interface List {
   id: string,
   type: TypeData.List,
-  data?: string[]
+  data?: string
 }
 
 export type DataDisplay = Heading | Note | List
