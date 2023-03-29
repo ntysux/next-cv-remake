@@ -6,6 +6,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { buttonTheme } from '@/elements/button';
 import { menuTheme } from '@/elements/menu';
 import { inputTheme } from '@/elements/input';
+import { textareaTheme } from '@/elements/textarea';
 
 const theme = extendTheme({
   colors: {
@@ -28,7 +29,8 @@ const theme = extendTheme({
   components: {
     Button: buttonTheme,
     Menu: menuTheme,
-    Input: inputTheme
+    Input: inputTheme,
+    Textarea: textareaTheme
   }
 });
 
