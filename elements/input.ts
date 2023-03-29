@@ -5,7 +5,9 @@ const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpe
 
 const unstyled1 = definePartsStyle({
   field: {
-    color: 'app.gray.1'
+    fontSize: 'xl',
+    fontWeight: '500',
+    color: 'app.black.2',
   }
 });
 
