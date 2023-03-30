@@ -41,7 +41,7 @@ export default function Stage() {
             {
               data.type === TypeData.Note &&
                 <DataDisplayFrame name='Ghi chú' index={index}>
-                  <NoteEdit />
+                  <NoteEdit index={index} data={data} />
                 </DataDisplayFrame>
             }
             {

@@ -28,6 +28,20 @@ const reducer = (cv = init, action: TypeAction): Cv => {
           }
         ]
       }
+    case 'SET_NOTE':
+      if ('payload' in action && 'index' in action.payload && 'data' in action.payload) {
+        return {
+          ...cv,
+          section: [
+            ...cv.section.slice(0, action.payload.index),
+            {
+              ...cv.section[action.payload.index],
+              data: action.payload.data
+            },
+            ...cv.section.slice(action.payload.index + 1)
+          ]
+        }
+      }
     case 'ADD_HEADING':
       return {
         ...cv,
@@ -49,7 +63,7 @@ const reducer = (cv = init, action: TypeAction): Cv => {
               ...cv.section[action.payload.index],
               data: action.payload.data
             },
-            ...cv.section.slice(action.payload.index + 1),
+            ...cv.section.slice(action.payload.index + 1)
           ]
         }
       }
@@ -74,7 +88,7 @@ const reducer = (cv = init, action: TypeAction): Cv => {
               ...cv.section[action.payload.index],
               data: action.payload.data
             },
-            ...cv.section.slice(action.payload.index + 1),
+            ...cv.section.slice(action.payload.index + 1)
           ]
         }
       }

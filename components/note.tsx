@@ -1,7 +1,16 @@
+import { setNote } from "@/redux/actions";
+import { Note } from "@/redux/state-interface";
 import { Textarea } from "@chakra-ui/react";
-import { useRef } from "react";
+import { ChangeEvent, useRef } from "react";
+import { useDispatch } from "react-redux";
 
-export function NoteEdit() {
+interface Props {
+  index: number,
+  data: Note
+}
+
+export function NoteEdit({index, data}: Props) {
+  const dispatch = useDispatch();
   const textareaRef = useRef(null);
 
   function adjustTextareaHeight() {
@@ -10,11 +19,24 @@ export function NoteEdit() {
     textareaElement.style.height = `${textareaElement.scrollHeight}px`;
   }
 
+  function setNoteData(event: ChangeEvent<HTMLTextAreaElement>) {
+    if(event.target.value) {
+      dispatch(setNote(index, event.target.value));
+    }
+    else {
+      dispatch(setNote(index, null));
+    }
+  }
+
   return (
     <Textarea
+      value={data.data ? data.data : ''}
       ref={textareaRef}
       variant='unstyled1'
-      onChange={adjustTextareaHeight}
+      onChange={e => {
+        adjustTextareaHeight();
+        setNoteData(e);
+      }}
     />
   );
 }

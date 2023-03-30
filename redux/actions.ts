@@ -54,6 +54,11 @@ export const addNote = (): Action => ({
   type: 'ADD_NOTE'
 });
 
+export const setNote = (index: number, data: string | null): SetData => ({
+  type: 'SET_NOTE',
+  payload: {index, data}
+});
+
 export const addHeading = (): Action => ({
   type: 'ADD_HEADING'
 });
