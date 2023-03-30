@@ -7,19 +7,19 @@ export enum TypeData {
 export interface Heading {
   id: string,
   type: TypeData.Heading,
-  data?: string
+  data?: string | null
 }
 
 export interface Note {
   id: string,
   type: TypeData.Note,
-  data?: string
+  data?: string | null
 }
 
 export interface List {
   id: string,
   type: TypeData.List,
-  data?: string
+  data?: string | null
 }
 
 export type DataDisplay = Heading | Note | List
