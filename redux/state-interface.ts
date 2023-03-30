@@ -4,22 +4,21 @@ export enum TypeData {
   Note
 }
 
-export interface Heading {
+interface TypeDataBasic {
   id: string,
-  type: TypeData.Heading,
   data?: string | null
 }
 
-export interface Note {
-  id: string,
-  type: TypeData.Note,
-  data?: string | null
+export interface Heading extends TypeDataBasic {
+  type: TypeData.Heading
 }
 
-export interface List {
-  id: string,
-  type: TypeData.List,
-  data?: string | null
+export interface Note extends TypeDataBasic {
+  type: TypeData.Note
+}
+
+export interface List extends TypeDataBasic {
+  type: TypeData.List
 }
 
 export type DataDisplay = Heading | Note | List
