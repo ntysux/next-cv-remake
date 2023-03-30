@@ -50,6 +50,20 @@ const reducer = (cv = init, action: TypeAction): Cv => {
           }
         ]
       }
+    case 'SET_LIST':
+      if ('payload' in action && 'index' in action.payload && 'data' in action.payload) {
+        return {
+          ...cv,
+          section: [
+            ...cv.section.slice(0, action.payload.index),
+            {
+              ...cv.section[action.payload.index],
+              data: action.payload.data
+            },
+            ...cv.section.slice(action.payload.index + 1),
+          ]
+        }
+      }
     case 'REMOVE_SECTION':
       if('payload' in action && 'index' in action.payload) {
         return {

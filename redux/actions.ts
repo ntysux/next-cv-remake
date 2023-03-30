@@ -17,8 +17,14 @@ export interface Rename extends Action {
   payload: {newName: string}
 }
 
+// Remove Section
 export interface RemoveSection extends Action {
   payload: {index: number}
+}
+
+// Set List
+export interface SetList extends Action {
+  payload: {index: number, data: string | null}
 }
 
 export type TypeAction = 
@@ -26,7 +32,8 @@ export type TypeAction =
   ChangeColor |
   ChangeMode |
   Rename |
-  RemoveSection
+  RemoveSection |
+  SetList
 
 export const changeColor = (color: string): ChangeColor => ({
   type: 'CHANGE_COLOR',
@@ -53,6 +60,11 @@ export const addHeading = (): Action => ({
 
 export const addList = (): Action => ({
   type: 'ADD_LIST'
+});
+
+export const setList = (index: number, data: string | null): SetList => ({
+  type: 'SET_LIST',
+  payload: {index, data}
 });
 
 export const removeSection = (index: number): RemoveSection => ({

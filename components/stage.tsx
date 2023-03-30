@@ -47,7 +47,7 @@ export default function Stage() {
             {
               data.type === TypeData.List &&
                 <DataDisplayFrame name='Danh sách' index={index}>
-                  <ListEdit />
+                  <ListEdit index={index} data={data} />
                 </DataDisplayFrame>
             }
           </Stack>

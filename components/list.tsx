@@ -1,36 +1,50 @@
 import { Textarea } from "@chakra-ui/react";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { setList } from "@/redux/actions";
+import { List } from "@/redux/state-interface";
 
-export default function ListEdit() {
+interface Props {
+  index: number,
+  data: List
+}
+
+export default function ListEdit({index, data}: Props) {
   const textareaRef = useRef(null);
-  const [state, setState] = useState('');
+  const dispatch = useDispatch();
 
   function adjustTextareaHeight() {
     const textareaElement = textareaRef.current as unknown as HTMLTextAreaElement;
-    textareaElement.style.height = "auto";
+    textareaElement.style.height = 'auto';
     textareaElement.style.height = `${textareaElement.scrollHeight}px`;
   }
 
-  function setNoteData(event: ChangeEvent<HTMLTextAreaElement>) {
+  function setListData(event: ChangeEvent<HTMLTextAreaElement>) {
     const newValue = event.target.value;
     const lines = newValue.split("\n");
     const newLines = lines.map(line => {
-      if (!line.startsWith("•")) {
-        return "•" + line;
+      if (!line.startsWith("-")) {
+        return "-" + line;
       }
       return line;
     });
-    setState(newLines.join("\n"));
+
+    if (newLines.length === 1 && newLines[0] === '-') {
+      dispatch(setList(index, null));
+    }
+    else {
+      dispatch(setList(index, newLines.join("\n")));
+    }
   }
 
   return (
     <Textarea
-      value={state}
+      value={data.data !== null ? data.data : '-'}
       ref={textareaRef}
       variant='unstyled2'
       onChange={e => {
         adjustTextareaHeight();
-        setNoteData(e);
+        setListData(e);
       }}
     />
   );
