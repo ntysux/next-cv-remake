@@ -22,8 +22,8 @@ export interface RemoveSection extends Action {
   payload: {index: number}
 }
 
-// Set List
-export interface SetList extends Action {
+// Set Data Heading | Note | List
+export interface SetData extends Action {
   payload: {index: number, data: string | null}
 }
 
@@ -33,7 +33,7 @@ export type TypeAction =
   ChangeMode |
   Rename |
   RemoveSection |
-  SetList
+  SetData
 
 export const changeColor = (color: string): ChangeColor => ({
   type: 'CHANGE_COLOR',
@@ -58,11 +58,16 @@ export const addHeading = (): Action => ({
   type: 'ADD_HEADING'
 });
 
+export const setHeading = (index: number, data: string | null): SetData => ({
+  type: 'SET_HEADING',
+  payload: {index, data}
+});
+
 export const addList = (): Action => ({
   type: 'ADD_LIST'
 });
 
-export const setList = (index: number, data: string | null): SetList => ({
+export const setList = (index: number, data: string | null): SetData => ({
   type: 'SET_LIST',
   payload: {index, data}
 });

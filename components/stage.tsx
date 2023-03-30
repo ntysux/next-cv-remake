@@ -35,7 +35,7 @@ export default function Stage() {
             {
               data.type === TypeData.Heading &&
                 <DataDisplayFrame name='Tiêu đề' index={index}>
-                  <HeadingEdit />
+                  <HeadingEdit index={index} data={data} />
                 </DataDisplayFrame>
             }
             {
