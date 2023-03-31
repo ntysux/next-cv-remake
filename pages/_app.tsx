@@ -7,6 +7,7 @@ import { buttonTheme } from '@/elements/button';
 import { menuTheme } from '@/elements/menu';
 import { inputTheme } from '@/elements/input';
 import { textareaTheme } from '@/elements/textarea';
+import { badgeTheme } from '@/elements/badge';
 
 const theme = extendTheme({
   colors: {
@@ -30,7 +31,8 @@ const theme = extendTheme({
     Button: buttonTheme,
     Menu: menuTheme,
     Input: inputTheme,
-    Textarea: textareaTheme
+    Textarea: textareaTheme,
+    Badge: badgeTheme
   }
 });
 
