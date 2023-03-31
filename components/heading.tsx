@@ -1,15 +1,15 @@
 import { setHeading } from "@/redux/actions";
-import { Heading } from "@/redux/state-interface";
-import { Input } from "@chakra-ui/react";
+import { Heading as IHeading } from "@/redux/state-interface";
+import { Heading, Input } from "@chakra-ui/react";
 import { ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 
-interface Props {
+interface EditProps {
   index: number,
-  data: Heading
+  data: IHeading
 }
 
-export default function HeadingEdit({index, data}: Props) {
+export default function HeadingEdit({index, data}: EditProps) {
   const dispatch = useDispatch();
 
   function setDataHeading(e: ChangeEvent<HTMLInputElement>) {
@@ -28,5 +28,23 @@ export default function HeadingEdit({index, data}: Props) {
       size='lg'
       onChange={e => setDataHeading(e)}
     />
+  );
+}
+
+interface ViewProps {
+  data: IHeading
+}
+
+export function HeadingView({data}: ViewProps) {
+  return (
+    <Heading
+      fontFamily='Quicksand'
+      size='md'
+      color='app.black.1'
+      fontWeight='300'
+      letterSpacing='wide'
+    >
+      {data.data ? data.data : ''}
+    </Heading>
   );
 }
