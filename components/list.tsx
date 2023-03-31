@@ -1,4 +1,4 @@
-import { Textarea } from "@chakra-ui/react";
+import { ListItem, Textarea, UnorderedList } from "@chakra-ui/react";
 import { ChangeEvent, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { setList } from "@/redux/actions";
@@ -47,5 +47,23 @@ export default function ListEdit({index, data}: Props) {
         setListData(e);
       }}
     />
+  );
+}
+
+interface ViewProps {
+  data: List
+}
+
+export function ListView({data}: ViewProps) {
+  const dataHandled = data.data?.split('\n').join('').split('-'); 
+
+  return (
+    <UnorderedList>
+      {
+        dataHandled?.map((line, index) =>
+          index !== 0 && <ListItem key={index}>{line}</ListItem>
+        )
+      }
+    </UnorderedList>
   );
 }
