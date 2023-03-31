@@ -1,6 +1,6 @@
 import { setNote } from "@/redux/actions";
 import { Note } from "@/redux/state-interface";
-import { Textarea } from "@chakra-ui/react";
+import { Badge, Box, Stack, Text, Textarea } from "@chakra-ui/react";
 import { ChangeEvent, useRef } from "react";
 import { useDispatch } from "react-redux";
 
@@ -38,5 +38,23 @@ export function NoteEdit({index, data}: Props) {
         setNoteData(e);
       }}
     />
+  );
+}
+
+interface ViewProps {
+  data: Note
+}
+
+export function NoteView({data}: ViewProps) {
+  return (
+    <Stack spacing='1'>
+      {
+        data.data?.split("\n").map((line, index) => 
+          <Badge key={index} variant='solid1'>
+            {line}
+          </Badge>
+        )
+      }
+    </Stack>
   );
 }
