@@ -1,12 +1,10 @@
 import { Container, Stack } from "@chakra-ui/react";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
-import AddMore from "./add-more";
-import { NoteEdit } from "./note";
 import { DataDisplay, TypeData } from "@/redux/state-interface";
-import DataDisplayFrame from "./data-display-frame";
-import HeadingEdit from "./heading";
-import ListEdit from "./list";
+import { HeadingView } from "./heading";
+import { NoteView } from "./note";
+import { ListView } from "./list";
 
 interface Map {
   array: DataDisplay[],
@@ -16,7 +14,7 @@ interface Map {
 const Map = ({array, render}: Map) =>
   <>{array.map((data, index) => render(data, index))}</>
 
-export default function Stage() {
+export default function StageView() {
   const { section } = useSelector((state: RootState) => state.cv);
 
   return (
@@ -34,25 +32,18 @@ export default function Stage() {
           <Stack key={index}>
             {
               data.type === TypeData.Heading &&
-                <DataDisplayFrame name='Tiêu đề' index={index}>
-                  <HeadingEdit index={index} data={data} />
-                </DataDisplayFrame>
+                <HeadingView data={data} />
             }
             {
               data.type === TypeData.Note &&
-                <DataDisplayFrame name='Ghi chú' index={index}>
-                  <NoteEdit index={index} data={data} />
-                </DataDisplayFrame>
+                <NoteView data={data} />
             }
             {
               data.type === TypeData.List &&
-                <DataDisplayFrame name='Danh sách' index={index}>
-                  <ListEdit index={index} data={data} />
-                </DataDisplayFrame>
+                <ListView data={data} />
             }
           </Stack>
         }/>
-        <AddMore />
       </Stack>
     </Container>
   );
