@@ -2,6 +2,7 @@ import { Divider, HStack } from "@chakra-ui/react";
 import ColorTheme from "./color-theme";
 import MainName from "./main-name";
 import Mode from "./mode";
+import Save from "./save";
 
 export default function Dashboard() {
   return (
@@ -16,6 +17,8 @@ export default function Dashboard() {
       <Mode />
       <Divider orientation='vertical' h='10px' rounded='full' borderColor='app.black.2' />
       <ColorTheme />
+      <Divider orientation='vertical' h='10px' rounded='full' borderColor='app.black.2' />
+      <Save />
     </HStack>
   );
 }
