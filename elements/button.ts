@@ -3,7 +3,13 @@ import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
 // solid
 const solid1 = defineStyle({
   bg: 'app.black.1',
-  color: 'white'
+  color: 'white',
+  _loading: {
+    cursor: 'default',
+    _hover: {
+      bg: 'app.black.1'
+    }
+  }
 });
 
 // outline
