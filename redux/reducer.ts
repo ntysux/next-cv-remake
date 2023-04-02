@@ -18,12 +18,12 @@ const reducer = (cv = init, action: TypeAction): Cv => {
     case 'CHANGE_MODE':
       if ('payload' in action && 'mode' in action.payload) return {...cv, mode: action.payload.mode};
     case 'SET_AVATAR':
-      if ('payload' in action && 'name' in action.payload && 'blodUrl' in action.payload) {
+      if ('payload' in action && 'name' in action.payload && 'firebaseUrl' in action.payload && 'blodUrl' in action.payload) {
         return {
           ...cv,
           avatar: {
-            notionUrl: '',
             name: action.payload.name,
+            firebaseUrl: action.payload.firebaseUrl,
             blodUrl: action.payload.blodUrl
           }
         }

@@ -1,3 +1,4 @@
+import uploadImageToFirebase from "@/firebase/upload";
 import { setAvatar } from "@/redux/actions";
 import { RootState } from "@/redux/store";
 import { Box, Center, Circle, FormControl, FormLabel, Img, Input } from "@chakra-ui/react";
@@ -9,12 +10,13 @@ export default function AvatarEdit() {
   const dispatch = useDispatch();
   const { avatar, color } = useSelector((state: RootState) => state.cv);
 
-  function handleSetImage(event: ChangeEvent<HTMLInputElement>) {
+  async function handleSetImage(event: ChangeEvent<HTMLInputElement>) {
     const input = event.target;
     const file: FileList = input.files!;
     const name: string = file[0].name;
     const blodUrl: string = URL.createObjectURL(file[0]);
-    dispatch(setAvatar(name, blodUrl));
+    const filebaseUrl: string = await uploadImageToFirebase(file[0], name);
+    dispatch(setAvatar(name, filebaseUrl, blodUrl));
   }
 
   return (
