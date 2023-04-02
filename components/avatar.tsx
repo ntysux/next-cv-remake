@@ -18,9 +18,9 @@ export default function AvatarEdit() {
   }
 
   return (
-    <FormControl>
-      <FormLabel m='0'>
-        <Center>
+    <Center bg='gray'>
+      <FormControl w='min'>
+        <FormLabel m='0'>
           <Circle
             size='90px'
             cursor='pointer'
@@ -37,13 +37,13 @@ export default function AvatarEdit() {
                 <Img src={avatar?.blodUrl} />
             }
           </Circle>
-        </Center>
-      </FormLabel>
-      <Input
-        type='file'
-        display='none'
-        onChange={e => handleSetImage(e)}
-      />
-    </FormControl>
+        </FormLabel>
+        <Input
+          type='file'
+          display='none'
+          onChange={e => handleSetImage(e)}
+        />
+      </FormControl>
+    </Center>
   );
 }
