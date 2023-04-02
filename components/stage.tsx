@@ -7,6 +7,7 @@ import { DataDisplay, TypeData } from "@/redux/state-interface";
 import DataDisplayFrame from "./data-display-frame";
 import HeadingEdit from "./heading";
 import ListEdit from "./list";
+import AvatarEdit from "./avatar";
 
 interface Map {
   array: DataDisplay[],
@@ -30,6 +31,7 @@ export default function Stage() {
       boxShadow='rgba(0, 0, 0, 0.15) 0px 3px 3px 0px'
     >
       <Stack spacing='4'>
+        <AvatarEdit />
         <Map array={section} render={(data, index) => 
           <Stack key={index}>
             {
