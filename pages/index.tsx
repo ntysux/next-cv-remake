@@ -1,7 +1,17 @@
-import { Button, Flex, Heading, Stack, Text, VStack } from "@chakra-ui/react";
-import Link from "next/link";
+import { Button, Flex, Heading, Stack, Text, VStack, useBoolean } from "@chakra-ui/react";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function HeroPage() {
+  const router = useRouter();
+  const [loading, setLoading] = useBoolean(false);
+
+  async function handleCreateNewNotionPage() {
+    setLoading.on();
+    const { data } = await axios.post('http://localhost:3000/api/create');
+    router.push(`/cv/${data.newPageId}`);
+  }
+
   return (
     <Flex
       minH='100vh'
@@ -20,7 +30,11 @@ export default function HeroPage() {
           Next <Text as='span' fontWeight='500' color='app.teal.1'>CV</Text>
         </Heading>
         <Stack direction={['column', 'row']}>
-          <Button variant='solid1' as={Link} href='/cv/cv1'>
+          <Button
+            isLoading={loading}
+            variant='solid1'
+            onClick={handleCreateNewNotionPage}
+          >
             Bắt đầu
           </Button>
           <Button variant='outline1'>
