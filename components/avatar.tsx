@@ -14,9 +14,8 @@ export default function AvatarEdit() {
     const input = event.target;
     const file: FileList = input.files!;
     const name: string = file[0].name;
-    const blodUrl: string = URL.createObjectURL(file[0]);
     const filebaseUrl: string = await uploadImageToFirebase(file[0], name);
-    dispatch(setAvatar(name, filebaseUrl, blodUrl));
+    dispatch(setAvatar(name, filebaseUrl));
   }
 
   return (
@@ -27,16 +26,16 @@ export default function AvatarEdit() {
             size='90px'
             cursor='pointer'
             overflow='hidden'
-            border={avatar?.blodUrl ? '4px solid' : '2px dashed'}
+            border={avatar?.firebaseUrl ? '4px solid' : '2px dashed'}
             borderColor={color}
           >
             {
-              !avatar?.blodUrl ?
+              !avatar?.firebaseUrl ?
                 <Box color={color}>
                   <IconPhotoPlus />
                 </Box>
               :
-                <Img src={avatar?.blodUrl} />
+                <Img src={avatar?.firebaseUrl} />
             }
           </Circle>
         </FormLabel>

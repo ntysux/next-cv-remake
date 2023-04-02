@@ -26,7 +26,6 @@ export type DataDisplay = Heading | Note | List
 export interface Avatar {
   name: string,
   firebaseUrl: string,
-  blodUrl: string,
   notionUrl?: string
 }
 

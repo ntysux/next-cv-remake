@@ -19,7 +19,7 @@ export interface Rename extends Action {
 
 // Rename
 export interface SetAvatar extends Action {
-  payload: {name: string, firebaseUrl: string, blodUrl: string}
+  payload: {name: string, firebaseUrl: string}
 }
 
 // Remove Section
@@ -56,9 +56,9 @@ export const rename = (newName: string): Rename => ({
   payload: {newName}
 });
 
-export const setAvatar = (name: string, firebaseUrl: string, blodUrl: string): SetAvatar => ({
+export const setAvatar = (name: string, firebaseUrl: string): SetAvatar => ({
   type: 'SET_AVATAR',
-  payload: {name, firebaseUrl, blodUrl}
+  payload: {name, firebaseUrl}
 });
 
 export const addNote = (): Action => ({
