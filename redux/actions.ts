@@ -17,6 +17,11 @@ export interface Rename extends Action {
   payload: {newName: string}
 }
 
+// Rename
+export interface SetAvatar extends Action {
+  payload: {name: string, blodUrl: string}
+}
+
 // Remove Section
 export interface RemoveSection extends Action {
   payload: {index: number}
@@ -33,7 +38,8 @@ export type TypeAction =
   ChangeMode |
   Rename |
   RemoveSection |
-  SetData
+  SetData |
+  SetAvatar
 
 export const changeColor = (color: string): ChangeColor => ({
   type: 'CHANGE_COLOR',
@@ -48,6 +54,11 @@ export const changeMode = (mode: boolean): ChangeMode => ({
 export const rename = (newName: string): Rename => ({
   type: 'RENAME',
   payload: {newName}
+});
+
+export const setAvatar = (name: string, blodUrl: string): SetAvatar => ({
+  type: 'SET_AVATAR',
+  payload: {name, blodUrl}
 });
 
 export const addNote = (): Action => ({
