@@ -18,12 +18,11 @@ export default function AvatarEdit() {
   }
 
   return (
-    <FormControl w={['auto', 'min']}>
+    <FormControl>
       <FormLabel m='0'>
         <Center>
           <Circle
-            display={['flex', 'none']}
-            size='70px'
+            size='90px'
             cursor='pointer'
             overflow='hidden'
             border={avatar?.blodUrl ? '4px solid' : '2px dashed'}
@@ -38,25 +37,6 @@ export default function AvatarEdit() {
                 <Img src={avatar?.blodUrl} />
             }
           </Circle>
-        </Center>
-        <Center
-          display={['none', 'flex']}
-          w='108px'
-          h='132px'
-          rounded='xl'
-          cursor='pointer'
-          overflow='hidden'
-          border={avatar?.blodUrl ? '4px solid' : '2px dashed'}
-          borderColor={color}
-        >
-          {
-            !avatar?.blodUrl ?
-              <Box color={color}>
-                <IconPhotoPlus />
-              </Box>
-            :
-              <Img src={avatar?.blodUrl} />
-          }
         </Center>
       </FormLabel>
       <Input
