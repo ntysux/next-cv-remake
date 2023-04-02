@@ -1,4 +1,4 @@
-import { Container, Stack } from "@chakra-ui/react";
+import { Container, Stack, Text } from "@chakra-ui/react";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import { DataDisplay, TypeData } from "@/redux/state-interface";
@@ -20,7 +20,7 @@ export default function StageView() {
   return (
     <Container
       mt='8'
-      p='4'
+      p='6'
       px='8'
       bg='white'
       rounded='xl'
@@ -28,6 +28,17 @@ export default function StageView() {
       boxShadow='rgba(0, 0, 0, 0.15) 0px 3px 3px 0px'
     >
       <Stack spacing='4'>
+        {
+          !section.length &&
+          <Text
+            textAlign='center'
+            fontSize='lg'
+            fontWeight='300'
+            color='app.gray.1'
+          >
+            CV sẽ được hiển thị tại đây.
+          </Text>
+        }
         <Map array={section} render={(data, index) => 
           <Stack key={index}>
             {
