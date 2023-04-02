@@ -18,7 +18,7 @@ export default function AvatarEdit() {
   }
 
   return (
-    <Center bg='gray'>
+    <Center>
       <FormControl w='min'>
         <FormLabel m='0'>
           <Circle
