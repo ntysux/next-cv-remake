@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import StageView from "@/components/stage-view";
 import { GetServerSidePropsContext } from "next";
 import { Client } from "@notionhq/client";
-import { Cv, Heading, List, Note, TypeData } from "@/redux/state-interface";
+import { Avatar, Cv, Heading, List, Note, TypeData } from "@/redux/state-interface";
 import { useEffect } from "react";
 import { mergeApi } from "@/redux/actions";
 
@@ -73,13 +73,22 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     // get page data
     const name: string = page.properties.name.title[0].plain_text;
     const color: string = page.properties.color.rich_text[0].plain_text; 
-    
+    let avatar: Avatar;
+
     cvApi = {
       id: page.id,
       name: name,
       color: color,
       mode: false,
       section: []
+    }
+
+    if(page.properties.avatar.files.length) {
+      avatar = {
+        name: page.properties.avatar.files[0].name,
+        firebaseUrl: page.properties.avatar.files[0].external.url
+      }
+      cvApi.avatar = avatar;
     }
 
     // get section page data
