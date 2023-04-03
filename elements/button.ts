@@ -29,6 +29,9 @@ const unstyled1 = defineStyle({
   color: 'app.gray.1',
   _hover: {
     color: 'app.gray.2'
+  },
+  _loading: {
+    cursor: 'default'
   }
 });
 
