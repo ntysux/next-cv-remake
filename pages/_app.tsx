@@ -8,6 +8,7 @@ import { menuTheme } from '@/elements/menu';
 import { inputTheme } from '@/elements/input';
 import { textareaTheme } from '@/elements/textarea';
 import { badgeTheme } from '@/elements/badge';
+import { listTheme } from '@/elements/list';
 
 const theme = extendTheme({
   colors: {
@@ -32,7 +33,8 @@ const theme = extendTheme({
     Menu: menuTheme,
     Input: inputTheme,
     Textarea: textareaTheme,
-    Badge: badgeTheme
+    Badge: badgeTheme,
+    List: listTheme
   }
 });
 
