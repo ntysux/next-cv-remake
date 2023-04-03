@@ -22,7 +22,7 @@ export default function Stage() {
 
   return (
     <Container
-      mt='8'
+      my='8'
       p='4'
       px='8'
       bg='white'
