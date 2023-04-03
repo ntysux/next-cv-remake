@@ -112,6 +112,10 @@ const reducer = (cv = init, action: TypeAction): Cv => {
           ]
         }
       }
+    case 'MERGE_API':
+      if('payload' in action && 'cv' in action.payload) {
+        return {...action.payload.cv}
+      }
     default:
       return cv;
   }

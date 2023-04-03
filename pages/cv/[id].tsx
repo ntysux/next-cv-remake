@@ -2,11 +2,13 @@ import { Flex, Text } from "@chakra-ui/react";
 import ControlBar from "@/components/control-bar";
 import Stage from "@/components/stage";
 import { RootState } from "@/redux/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import StageView from "@/components/stage-view";
 import { GetServerSidePropsContext } from "next";
 import { Client } from "@notionhq/client";
 import { Cv, Heading, List, Note, TypeData } from "@/redux/state-interface";
+import { useEffect } from "react";
+import { mergeApi } from "@/redux/actions";
 
 interface Props {
   isPage: boolean,
@@ -14,8 +16,12 @@ interface Props {
 }
 
 export default function CvPage({isPage, cvApi}: Props) {
+  const dispatch = useDispatch();
   const { mode } = useSelector((state: RootState) => state.cv);
-  console.log(cvApi)
+  
+  useEffect(() => {
+    dispatch(mergeApi(cvApi));
+  }, []);
 
   return isPage ? (
     <Flex

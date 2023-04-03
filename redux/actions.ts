@@ -1,3 +1,5 @@
+import { Cv } from "./state-interface"
+
 export interface Action {
   type: string
 }
@@ -32,6 +34,10 @@ export interface SetData extends Action {
   payload: {index: number, data: string | null}
 }
 
+export interface MergeApi extends Action {
+  payload: {cv: Cv}
+}
+
 export type TypeAction = 
   Action |
   ChangeColor |
@@ -39,7 +45,8 @@ export type TypeAction =
   Rename |
   RemoveSection |
   SetData |
-  SetAvatar
+  SetAvatar |
+  MergeApi
 
 export const changeColor = (color: string): ChangeColor => ({
   type: 'CHANGE_COLOR',
@@ -91,4 +98,9 @@ export const setList = (index: number, data: string | null): SetData => ({
 export const removeSection = (index: number): RemoveSection => ({
   type: 'REMOVE_SECTION',
   payload: {index}
+});
+
+export const mergeApi = (cv: Cv): MergeApi => ({
+  type: 'MERGE_API',
+  payload: {cv}
 });
