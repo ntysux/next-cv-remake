@@ -5,6 +5,7 @@ import { DataDisplay, TypeData } from "@/redux/state-interface";
 import { HeadingView } from "./heading";
 import { NoteView } from "./note";
 import { ListView } from "./list";
+import { AvatarView } from "./avatar";
 
 interface Map {
   array: DataDisplay[],
@@ -28,6 +29,7 @@ export default function StageView() {
       boxShadow='rgba(0, 0, 0, 0.15) 0px 3px 3px 0px'
     >
       <Stack spacing='4'>
+        <AvatarView />
         {
           !section.length &&
           <Text

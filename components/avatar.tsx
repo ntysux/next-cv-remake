@@ -48,3 +48,27 @@ export default function AvatarEdit() {
     </Center>
   );
 }
+
+export function AvatarView() {
+  const { avatar, color } = useSelector((state: RootState) => state.cv);
+
+  return (
+    <Center>
+      <Circle
+        size='90px'
+        overflow='hidden'
+        border={avatar?.firebaseUrl ? '4px solid' : '2px dashed'}
+        borderColor={color}
+      >
+        {
+          !avatar?.firebaseUrl ?
+            <Box color={color}>
+              <IconPhotoPlus />
+            </Box>
+          :
+            <Img src={avatar?.firebaseUrl} />
+        }
+      </Circle>
+    </Center>
+  );
+}
